@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {useCart} from "react-use-cart"
+
 const Cart = () =>
 {
     const {
@@ -11,23 +12,29 @@ const Cart = () =>
     updateItemQuantity,
 removeItem,
 emptyCart} = useCart();
-if(totalItems==4)
-{
-    alert("you have done max booking")
-}
-else{
-    
-}
+
+
+    if(totalItems>=4)
+    {
+        removeItem(items[3].id)
+        alert("you have done max booking")
+        return false;
+    }
+    else{
+        
+    }
+
 if(isEmpty) return <h1 className="text-center"> Your Cart is Empty</h1>
     return(
         <section className="py04 container">
         <div className row jusify-content-center>
         <div className="col-12">
-        <h1><i class="fa fa-shopping-cart"></i>({totalItems})
+        <h1><i className="fa fa-shopping-cart"></i>({totalUniqueItems})
        </h1>
         <table className="table table-light table-hover m-0">
             <tbody>
-{items.map((item,index)=>
+    
+{ items.map((item,index)=>
     {
         return(
         <tr key={index}>

@@ -1,11 +1,14 @@
 import React from 'react';
 import  Itemcard from "./Itemcard";
-
-
 import data from './data';
+import {useCart} from "react-use-cart"
+
+
 const Home =()=>
 {
- 
+    const { emptyCart } = useCart();
+
+    //emptyCart()
     return(
         <>
 <h1 className="text-center mt-3">Claim your free Trial</h1>
